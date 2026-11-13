@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--
+=====================================================================
+  PANDUAN KERJA KELOMPOK 7 (FORK & PULL REQUEST)
+  Repo utama milik ketua (Public). Anggota TIDAK push langsung ke
+  repo ketua, tetapi bekerja lewat salinan (fork) miliknya sendiri.
+ 
+  A. SEKALI SAJA (anggota)
+  1. Buka link repo ketua di GitHub, klik "Fork" > "Create fork".
+  2. Di repo hasil fork milikmu, klik "<> Code", salin link HTTPS.
+  3. Di terminal VS Code:
+        git clone <link-repo-hasil-fork-kamu>
+        cd <nama-folder-repo>
+ 
+  B. SETIAP KALI MENGERJAKAN TUGAS (anggota)
+  4. Buat branch baru:
+        git checkout -b <nama-branch>
+     Contoh: git checkout -b haikal / fitri / hapisah
+ 
+  5. Edit bagian kartu milikmu saja (cari komentar "BAGIAN: ..."),
+     lalu simpan file (Ctrl + S).
+ 
+  6. Simpan dan kirim ke fork milikmu:
+        git add .
+        git commit -m "menambahkan deskripsi kartu <nama-kamu>"
+        git push -u origin <nama-branch>
+ 
+  7. Buka repo fork-mu di GitHub, klik "Compare & pull request".
+     Pastikan tujuannya: base repository = <akun-ketua>/<nama-repo>,
+     branch = main. Lalu klik "Create pull request".
+ 
+  C. KETUA
+  8. Buka repo utama > tab "Pull requests" > buka kiriman anggota >
+     "Merge pull request" > "Confirm merge".
+  9. Ambil hasil gabungan ke laptop:
+        git checkout main
+        git pull origin main
+ 
+  Tips: jangan mengedit kartu anggota lain agar tidak terjadi
+  konflik saat merge.
+=====================================================================
+-->
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelompok 7</title>
+    <style>
+        :root {
+            --navy: #14213d;
+            --navy-soft: #1f3157;
+            --gold: #e0a526;
+            --paper: #f5f6f8;
+            --white: #ffffff;
+            --ink: #1b2233;
+            --muted: #5b6577;
+            --line: #dfe3ea;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .section {
+            background: var(--navy);
+            color: var(--white);
+            padding: 96px 0 88px;
+            border-bottom: 4px solid var(--gold);
+        }
+        .section h1 {
+            font-size: clamp(2.4rem, 6vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .section p {
+            font-size: 1.15rem;
+            color: #c9d1e3;
+            max-width: 52ch;
+        }
+
+        /* Anggota */
+        .members {
+            padding: 64px 0 24px;
+        }
+        .members h2 {
+            font-size: 1.6rem;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+        .members ul {
+            list-style: none;
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .members li {
+            padding: 16px 22px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--line);
+            border-left: 4px solid var(--gold);
+        }
+        .members li:last-child { border-bottom: none; }
+
+        /* Kartu */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 24px;
+            padding: 24px 0 80px;
+        }
+        .card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-top: 5px solid var(--navy);
+            border-radius: 10px;
+            padding: 28px 26px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card h1 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            color: var(--navy);
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+        .card p {
+            color: var(--muted);
+            font-size: 0.97rem;
+            flex-grow: 1;
+            margin-bottom: 22px;
+        }
+        .card p:empty::before {
+            content: "Deskripsi belum diisi.";
+            font-style: italic;
+            opacity: 0.7;
+        }
+        .card a {
+            display: inline-block;
+            align-self: flex-start;
+            background: var(--navy);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 11px 20px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .card a:hover { background: var(--navy-soft); }
+        .card a:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 600px) {
+            .section { padding: 64px 0 56px; }
+            .members { padding-top: 48px; }
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Kelompok 7</h1>
+                    <p>Ini adalah halaman kelompok 7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container members">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Anggota Kelompok</h2>
+                <ul>
+                    <li>M HAIKAL AS SAYUTI</li>
+                    <li>FITRI WULANDARI</li>
+                    <li>HAPISAH NURUL HASANAH</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container cards">
+        <div class="card">
+            <h1>HELLO</h1>
+            <h3>INI KARTU M HAIKAL AS SAYUTI</h3>
+            <p>HAIKAL MERUPAKAN MAHASISWA SISTEM INFORMASI KELAS A YANG SEDANG BERADA DI
+                SEMESTER 3. LAHIR DI JAMBI 2007</p>
+            <a href="https://wa.me/qr/R7PIDTBT7PT2P1" target="_blank">Hubungi di WhatsApp</a>
+        </div>
+        <div class="card">
+            <h1>HELLO</h1>
+            <h3>INI KARTU FITRI WULANDARI</h3>
+            <p></p> <!--tulis deskripsi diri di sini-->
+            <a href="https://wa.me/qr/5Z7Q2V6XK4Y2N1" target="_blank">Hubungi di WhatsApp</a>
+        </div>
+        <div class="card">
+            <h1>HELLO</h1>
+            <h3>INI KARTU HAPISAH NURUL HASANAH</h3>
+            <p></p> <!--tulis deskripsi diri di sini-->
+            <a href="https://wa.me/qr/5Z7Q2V6XK4Y2N1" target="_blank">Hubungi di WhatsApp</a>
+        </div>
+    </div>
+</body>
+</html>
